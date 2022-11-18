@@ -1,0 +1,13 @@
+:root {
+  background-color: white;
+}
+
+body {
+  margin-top: 3rem;
+  display: flex;
+  place-items: center;
+}
+
+#app {
+  margin: 0 auto;
+}
