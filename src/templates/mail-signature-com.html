@@ -1,0 +1,241 @@
+<table
+  style="width: 430px; font-size: 11pt; font-family: Arial, sans-serif"
+  class="ng-scope"
+  border="0"
+  cellspacing="0"
+  cellpadding="0"
+>
+  <tbody>
+    <tr>
+      <td
+        colspan="2"
+        style="border-bottom: 1px dotted #000; padding-bottom: 10px"
+      >
+        <strong
+          ><span
+            style="
+              font-size: 18pt;
+              font-family: Arial, sans-serif;
+              color: #0c0732;
+            "
+            class="ng-binding"
+            >Adam Shand</span
+          ></strong
+        >
+        <span ng-if="isAnyFieldEntered('title,website')" class="ng-scope"
+          ><br
+        /></span>
+        <strong
+          ng-if="showField('title')"
+          style="
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            color: #0c0732;
+          "
+          class="ng-binding ng-scope"
+          >Software Developer</strong
+        >
+        <strong
+          ><span ng-if="showField('website')" class="ng-scope"
+            ><span ng-if="isAnyFieldEntered('title')" class="ng-scope"> | </span
+            ><a
+              href="http://www.ink.fish"
+              target="_blank"
+              rel="noopener"
+              style="text-decoration: none"
+              ><span
+                style="
+                  font-size: 10pt;
+                  font-family: Arial, sans-serif;
+                  color: #244b91;
+                "
+                class="ng-binding"
+              >
+                www.ink.fish</span
+              ></a
+            ></span
+          ></strong
+        >
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" style="font-size: 1px; height: 15px; line-height: 1px">
+        &nbsp;
+      </td>
+    </tr>
+
+    <tr>
+      <td
+        ng-if="showField('logo')"
+        style="text-align:center' font-size: 10pt; font-family: Arial, sans-serif; width: 108px; vertical-align: top;"
+        class="ng-scope"
+        align="center"
+        width="108"
+        valign="top"
+      >
+        <a
+          ng-if="showField('logoURL')"
+          href="https://www.my-company.com/"
+          target="_blank"
+          class="ng-scope"
+          ><img
+            alt="Logo"
+            style="width: 88px; height: auto; border: 0"
+            ng-src="https://files.ink.fish/sigmaker/if.png"
+            src="https://files.ink.fish/sigmaker/if.png"
+            width="88"
+            border="0"
+        /></a>
+      </td>
+
+      <td style="padding-left: 15px" valign="top">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td
+                style="
+                  font-size: 9pt;
+                  font-family: Arial, sans-serif;
+                  vertical-align: top;
+                  line-height: 15px;
+                "
+                valign="top"
+              >
+                <span ng-if="showField('email')" class="ng-scope"
+                  ><span
+                    style="
+                      color: #0c0732;
+                      font-family: Arial, sans-serif;
+                      font-size: 12px;
+                    "
+                    class="ng-binding"
+                    ><strong>Email:</strong> adam@shand.net<br /></span
+                ></span>
+
+                <span
+                  ng-if="isAnyFieldEntered('company,address1,address2')"
+                  class="ng-scope"
+                >
+                  <span
+                    style="
+                      color: #0c0732;
+                      font-family: Arial, sans-serif;
+                      font-size: 12px;
+                    "
+                    ><strong>Address: </strong></span
+                  >
+                  <span
+                    ng-if="isAnyFieldEntered('address1,address2,company')"
+                    class="ng-scope"
+                  >
+                    <span
+                      ng-if="showField('company')"
+                      style="
+                        color: #0c0732;
+                        font-family: Arial, sans-serif;
+                        font-size: 12px;
+                      "
+                      class="ng-binding ng-scope"
+                      >Ink Fish</span
+                    >
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr
+              ng-if="isAnyFieldEntered('facebookURL,twitterURL,youtubeURL,linkedinURL,instagramURL')"
+              class="ng-scope"
+            >
+              <td
+                style="vertical-align: bottom; padding-top: 5px"
+                valign="bottom"
+              >
+                <span ng-if="showField('facebookURL')" class="ng-scope"
+                  ><a
+                    href="https://www.facebook.com/InkfishExpeditions/"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      ng-src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/fb.png"
+                      alt="facebook icon"
+                      style="border: 0; height: 20px; width: 20px"
+                      src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/fb.png"
+                      width="20"
+                      border="0" /></a
+                  >&nbsp;</span
+                ><span ng-if="showField('youtubeURL')" class="ng-scope"
+                  ><a
+                    href="https://www.youtube.com/channel/UCmFIo3uaPeYxfqLNMVxtL5w"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      ng-src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/yt.png"
+                      alt="youtube icon"
+                      style="border: 0; height: 20px; width: 20px"
+                      src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/yt.png"
+                      width="20"
+                      border="0" /></a
+                  >&nbsp;</span
+                ><span ng-if="showField('linkedinURL')" class="ng-scope"
+                  ><a
+                    href="https://www.linkedin.com/company/inkfishexpeditions/"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      ng-src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/ln.png"
+                      alt="linkedin icon"
+                      style="border: 0; height: 20px; width: 20px"
+                      src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/ln.png"
+                      width="20"
+                      border="0" /></a
+                  >&nbsp;</span
+                ><span ng-if="showField('instagramURL')" class="ng-scope"
+                  ><a
+                    href="https://instagram.com/inkfishexpeditions"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      ng-src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/it.png"
+                      alt="instagram icon"
+                      style="border: 0; height: 20px; width: 20px"
+                      src="https://www.mail-signatures.com/signature-generator/img/templates/black-friday-2021-1/it.png"
+                      width="20"
+                      border="0" /></a
+                  >&nbsp;</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" style="font-size: 1px; height: 15px; line-height: 1px">
+        &nbsp;
+      </td>
+    </tr>
+
+    <tr ng-if="showField('disclaimer')" class="ng-scope">
+      <td
+        colspan="2"
+        style="
+          padding-top: 15px;
+          line-height: 13px;
+          font-size: 7pt;
+          color: #959595;
+          font-family: Arial, sans-serif;
+        "
+        class="ng-binding"
+      >
+        The content of this email is confidential and intended for the recipient
+        specified in message only. It is strictly forbidden to share any part of
+        this message with any third party, without a written consent of the
+        sender. If you received this message by mistake, please reply to this
+        message and follow with its deletion, so that we can ensure such a
+        mistake does not occur in the future.
+      </td>
+    </tr>
+  </tbody>
+</table>
