@@ -1,5 +1,6 @@
 <script>    
-  import { copy } from 'svelte-copy';
+  // import ClipboardJS from 'clipboard'
+  import { onMount } from 'svelte';
 
   import Signature from './lib/Signature.svelte'
   const urlParams = new URLSearchParams(window.location.search);
@@ -8,37 +9,26 @@
   let title = urlParams.get('title') ?? "Legendary Dreamer"
   let phone = urlParams.get('phone') ?? "+1 234 567 8900"
 
-  // function copySig() {
-  //   only copies text/plain not text/html
-  //   const output = document.getElementById("signature").innerHTML;
-  //   const theClipboard = navigator.clipboard;
-  //   theClipboard.writeText(output).then(() => console.log('Copied signature to clipboard: ', {name, title, phone}));  
-  // }
-
-  function copySig() {
-    const richTextDiv = document.getElementById("signature");
-
-    // Works in Safari (macOS & iOS) and Chrome/Brave
-    // Is supposed to (but doesn't) work in Firefox 87+ with about:config thedom.events.asyncClipboard.clipboardItem = true
-    const clipboardItem = new ClipboardItem({
-      "text/plain": new Blob(
-        [richTextDiv.innerText.trim()],
-        { type: "text/plain" }
-      ),
-      "text/html": new Blob(
-        [richTextDiv.outerHTML],
-        { type: "text/html" }
-      ),
-    });
-
-    navigator.clipboard.write([clipboardItem]);
+  function copySignature() {
+    // deprecated but works on all tested browsers
+    var range = document.createRange();
+    range.selectNode(document.getElementById("signature"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
   }
 </script>
 
 <main>
   <div id="wrapper">
-    <Signature {name} {title} {phone} />
-    <button on:click={copySig}>Copy Signature</button>
+    <div id="signature">
+      <Signature {name} {title} {phone} />
+    </div>
+    <!-- <button data-clipboard-target="#signature">
+      Copy Signature
+    </button> -->
+    <button on:click={copySignature}>Copy Signature</button>
     <div id="form">
       <form>
         <label for="name">Name</label>
@@ -54,22 +44,27 @@
 </main>
 
 <style>
+  :root {
+    --darkPurple: #0C0732;
+    --fontSize: 12pt;
+  }
   div#wrapper {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    font-family: Helvetica, Arial, sans-serif; 
+    font-size: var(--fontSize);
   }
   div#form {
     margin-top: 2rem;
     padding: .5rem;
-    border: 2px solid #0c0732;
+    border: 2px solid var(--darkPurple);
   }
   form {
     display: flex;
     flex-direction: column;
   }
   label, button {
-    color: #0c0732;
+    color: var(--darkPurple);
     font-weight: bold;
   }
   label {
@@ -83,14 +78,44 @@
     flex-direction: row;
     justify-content: space-between;
     padding: .3rem;
-    border: 1px solid #0c0732;
+    border: 1px solid var(--darkPurple);
+    font-size: var(--fontSize);
   }
   button {
     margin-top: 1rem;
     padding: .5rem;
     border: 0px;
-    background-color: #0c0732;
+    background-color: var(--darkPurple);
     color: white;
+    font-size: var(--fontSize);
   }
 </style>
+<!-- 
+ function copySig() {
+  // only copies text/plain not text/html
+  const output = document.getElementById("signature").innerHTML;
+  const theClipboard = navigator.clipboard;
+  theClipboard.writeText(output).then(() => console.log('Copied signature to clipboard: ', {name, title, phone}));  
+}
 
+function copySig() {
+  // provides text/plain fallback, best solution but no Firefox support :-(
+  // https://www.nikouusitalo.com/blog/why-isnt-clipboard-write-copying-my-richtext-html/
+  const richTextDiv = document.getElementById("signature");
+
+  // Works in Safari (macOS & iOS) and Chrome/Brave
+  // Is supposed to (but doesn't) work in Firefox 87+ with about:config thedom.events.asyncClipboard.clipboardItem = true
+  const clipboardItem = new ClipboardItem({
+    "text/plain": new Blob(
+      [richTextDiv.innerText.trim()],
+      { type: "text/plain" }
+    ),
+    "text/html": new Blob(
+      [richTextDiv.outerHTML],
+      { type: "text/html" }
+    ),
+  });
+
+  navigator.clipboard.write([clipboardItem]);
+ }
+ -->
