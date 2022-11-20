@@ -17,7 +17,6 @@ Make with Svelte.
 
 - In `/public` make sure you have your logo and preferred social media icons (Instagram, YouTube, LinkedIn, and Facebook are included)
 - In `Signature.svelte` edit `logoUrl` and `links`
+- Update the `--base=/sigmaker` parameter to the build script in `packages.json` (default assumes you will copy files to a sub-directory called `sigmaker` on your webserver, eg. http://example.com/sigmaker/).
 - To deploy run `yarn build` and then copy all files in `/dist` to a webserver
 
-Note, it currently assumes you are installing to a sub-directory called `sigmaker` (eg. http://example.com/sigmaker/).  
-If you want it installed to the root domain or a different subdomain you need to update `--base=/sigmaker` in `packages.json`.
