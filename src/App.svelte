@@ -1,7 +1,4 @@
 <script>    
-  // import ClipboardJS from 'clipboard'
-  import { onMount } from 'svelte';
-
   import Signature from './lib/Signature.svelte'
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -9,26 +6,34 @@
   let title = urlParams.get('title') ?? "Legendary Dreamer"
   let phone = urlParams.get('phone') ?? "+1 234 567 8900"
 
+  let buttonMessage = 'Copy Signature'
+  function updateButtonMessage() {
+    // let the user know
+    let oldMessage = buttonMessage
+    buttonMessage = "Copied!"
+    setTimeout(() => {
+      buttonMessage = oldMessage
+    }, 1500)
+  }
+
+  let signature
   function copySignature() {
-    // deprecated but works on all tested browsers
     var range = document.createRange();
-    range.selectNode(document.getElementById("signature"));
+    range.selectNode(signature);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
-    document.execCommand("copy");
+    document.execCommand("copy"); // deprecated but works on all tested browsers
     window.getSelection().removeAllRanges();
+
   }
 </script>
 
 <main>
   <div id="wrapper">
-    <div id="signature">
+    <div bind:this={signature}>
       <Signature {name} {title} {phone} />
     </div>
-    <!-- <button data-clipboard-target="#signature">
-      Copy Signature
-    </button> -->
-    <button on:click={copySignature}>Copy Signature</button>
+    <button on:click={copySignature} on:click={updateButtonMessage}>{buttonMessage}</button>
     <div id="form">
       <form>
         <label for="name">Name</label>
@@ -37,7 +42,7 @@
         <input type="text" name="title" bind:value={title} />
         <label for="phone">Phone</label>
         <input type="text" name="phone" bind:value={phone} />
-        <button>Update URL</button>
+        <button>Save to URL</button>
       </form>
     </div>
   </div>
@@ -45,7 +50,7 @@
 
 <style>
   :root {
-    --darkPurple: #0C0732;
+    --darkPurple: #020035;
     --fontSize: 12pt;
   }
   div#wrapper {
@@ -90,17 +95,21 @@
     font-size: var(--fontSize);
   }
 </style>
+
 <!-- 
- function copySig() {
+
+// other copy paste methods saved for posterity
+function copySig() {
   // only copies text/plain not text/html
   const output = document.getElementById("signature").innerHTML;
   const theClipboard = navigator.clipboard;
   theClipboard.writeText(output).then(() => console.log('Copied signature to clipboard: ', {name, title, phone}));  
 }
 
-function copySig() {
+async function copySig() {
   // provides text/plain fallback, best solution but no Firefox support :-(
   // https://www.nikouusitalo.com/blog/why-isnt-clipboard-write-copying-my-richtext-html/
+  // https://github.com/nikouu/Web-API-Clipboard.write-Examples 
   const richTextDiv = document.getElementById("signature");
 
   // Works in Safari (macOS & iOS) and Chrome/Brave
@@ -116,6 +125,13 @@ function copySig() {
     ),
   });
 
-  navigator.clipboard.write([clipboardItem]);
+  await navigator.clipboard.write([clipboardItem]);
  }
- -->
+
+// <div bind:this={signature}>
+let signature
+async function copySignature1() {
+  await navigator.clipboard.writeText(signature.innerHTML); // or outerHTML
+}
+
+-->
