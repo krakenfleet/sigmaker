@@ -1,9 +1,7 @@
 <script>
   import { imagesBaseUrl, fonts } from './Signature.svelte'
-  console.log({imagesBaseUrl, fonts})
   export let links
 </script>
-
 
 <table
   id="socialLinks"
@@ -22,8 +20,8 @@
               padding: 0px;
             "
             ><img
-              src={`${imagesBaseUrl}/${link.name}.png`}
               alt=""
+              src={`${imagesBaseUrl}/${link.name}.png`}
               style="
                 max-width: 24px;
                 display: block;
