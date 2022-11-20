@@ -1,58 +1,132 @@
+<script context="module">
+  // images must load remotely to be reliable
+  export const imagesBaseUrl = 'https://files.ink.fish/sigmaker'
+  export const fonts = 'font-size: medium; Helvetica, Arial, sans-serif;'
+</script>
+
 <script>
+  import SocialIcons from './SocialIcons.svelte'
+
   export let name
   export let title
   export let phone
-  const baseUrl = 'https://files.ink.fish/sigmaker'
+
+  const logoUrl = imagesBaseUrl + '/inkfish.png'
+  const links = [
+      { name: 'instagram', url: 'https://instagram.com/inkfishexpeditions' },
+      { name: 'facebook', url: 'https://www.facebook.com/InkfishExpeditions/' },
+      { name: 'linkedin', url: 'https://www.linkedin.com/company/inkfishexpeditions/' },
+      { name: 'youtube', url: 'https://www.youtube.com/channel/UCmFIo3uaPeYxfqLNMVxtL5w' },
+  ]
+
 </script>
 
-<!-- Inline styles required for pasting to email clients. :-( -->
-<table border=0 style="font-size: 10pt; font-family: Helvetica, Arial, sans-serif; ">
-  <tr>
-    <td style="vertical-align: bottom; padding-right: 1.3em; border-right: 1px solid #8EA5C7" rowspan="6" >
-      <img border=0 style="height: 9rem" alt="" src={`${baseUrl}/if.png`} />
-    </td>
-    <td style="padding-left: 1.3em">
-      <strong style="font-size: 1.3rem;">{name}</strong>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding-left: 1.3em">
-      <em>{title}</em>
-    </td>
-  </tr>
-  <tr>
-    <td class="phone" style="padding-left: 1.3em; text-decoration: none; color: #0c0732">{phone}</td>
-  </tr>
-  <tr>
-    <td style="padding: .5rem; padding-left: 1.3em"><strong>Inkfish</strong> | 
-      <a style="text-decoration: none; color: #0c0732;" 
-        onMouseOver="this.style.color='#244B91'"
-        onMouseOut="this.style.color='#0C0732'" 
-        href="https://www.ink.fish">www.ink.fish</a>
-    </td>
-  </tr>
-  <tr><td style="padding-bottom: .5rem; padding-left: 1.3em; color: #244b91">Deeply curious</td></tr>
-  <tr>
-    <td style="padding-left: 1.3em">
-      <a href="https://instagram.com/inkfishexpeditions">
-        <img border=0 alt="" src={`${baseUrl}/ig.png`} /></a>
-      <a href="https://www.facebook.com/InkfishExpeditions/">
-        <img border=0 alt="" src={`${baseUrl}/fb.png`} /></a>
-      <a href="https://www.linkedin.com/company/inkfishexpeditions/">
-        <img border=0 alt="" src={`${baseUrl}/li.png`} /></a>
-      <a href="https://www.youtube.com/channel/UCmFIo3uaPeYxfqLNMVxtL5w"> 
-        <img border=0 alt="" src="{`${baseUrl}/yt.png`}" /></a>
-    </td>
-  </tr>
+<!-- Horrendous HTML and CSS as recommended for email signatures. -->
+<table 
+  style={fonts}
+  cellspacing="0"
+  cellpadding="0"
+>
+  <tbody>
+    <tr>
+      <td>
+        <table 
+          style={fonts}
+          cellspacing="0"
+          cellpadding="0"
+        >
+          <tbody>
+            <tr>
+              <td style="vertical-align: top">
+                <img
+                  src={logoUrl}
+                  role="presentation"
+                  style="display: block; max-width: 130px"
+                  width="130"
+                  alt=""
+                />
+              </td>
+              <td style="padding-left: 29px; border-right: 1px solid #8EA5C7;">
+                <div></div>
+              </td>
+              <td style="padding-left: 29px; vertical-align: middle">
+                <h2
+                  color="#0C0732"
+                  style="
+                    margin: 0px;
+                    font-size: 16pt;
+                    color: #0C0732;
+                    font-weight: 400;
+                  "
+                >
+                  {name}
+                </h2>
+                <p
+                  color="#0C0732"
+                  font-size="medium"
+                  style="
+                    margin: 0px;
+                    color: #0C0732;
+                    font-size: 11pt;
+                    font-style: italic;
+                    font-weight: 200;
+                    line-height: 17px;
+                  "
+                >
+                  {title}
+                </p>
+                <p
+                color="#0C0732"
+                font-size="medium"
+                style="
+                  margin: 0px;
+                  color: #0C0732;
+                  font-size: 11pt;
+                  font-weight: 200;
+                  line-height: 17px;
+                "
+              >
+                {phone}
+              </p>
+                <p
+                  font-size="medium"
+                  style="
+                    margin: 0px;
+                    font-size: 11pt;
+                    line-height: 37px;
+                  "
+                >
+                  <span style="color: #0C0732; font-weight: 600;">Inkfish</span>&nbsp; |&nbsp;
+                  <a 
+                    style="text-decoration: none; font-weight: 200; color: #0c0732;" 
+                    onMouseOver="this.style.color='#244B91'"
+                    onMouseOut="this.style.color='#0C0732'" 
+                    href="https://www.ink.fish">www.ink.fish</a>
+                </p>
+                <p
+                  font-size="medium"
+                  style="
+                    margin: 0px;
+                    font-size: 11pt;
+                    font-weight: 200;
+                    line-height: 24px;
+                    padding-bottom: 10px;
+                  "
+                >
+                  <span style="color: #114C96">Deeply curious</span>
+                </p>
+
+                <SocialIcons {links} />
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <style>
-  /* light blue: #8EA5C7, blue: #244b91, dark purple: #0c0732 */
-  /* a, a:link, a:visited {
-    text-decoration: none; 
-    color: #0c0732;
-  }
-  a:hover {
-    color: #8EA5C7;
-  } */
+  /* Must use inline styles with email. */
 </style>
