@@ -1,6 +1,6 @@
 # A Simple Email Signature Builder
 
-Make with Svelte.
+Made with [Svelte](https://svelte.dev).
 
 ## Features
 
