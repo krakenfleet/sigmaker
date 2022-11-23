@@ -7,8 +7,7 @@
   id="socialLinks"
   style={`display: inline-block; ${fonts}`}
   cellspacing="0"
-  cellpadding="0"
->
+  cellpadding="0">
   <tbody>
     <tr style="text-align: center">
       {#each links as link}
@@ -26,10 +25,9 @@
                 max-width: 24px;
                 display: block;
               "
-              height="24"
-          /></a>
+              height="24" /></a>
         </td>
-        <td width="5"><div></div></td>
+        <td width="5"><div /></td>
       {/each}
     </tr>
   </tbody>

@@ -1,16 +1,16 @@
-<script>    
+<script>
   import Signature from './lib/Signature.svelte'
-  const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = new URLSearchParams(window.location.search)
 
-  let name = urlParams.get('name') ?? "Randolf Carter";
-  let title = urlParams.get('title') ?? "Legendary Dreamer"
-  let phone = urlParams.get('phone') ?? "+1 234 567 8900"
+  let name = urlParams.get('name') ?? 'Randolf Carter'
+  let title = urlParams.get('title') ?? 'Legendary Dreamer'
+  let phone = urlParams.get('phone') ?? '+1 234 567 8900'
 
   let buttonMessage = 'Copy Signature'
   function updateButtonMessage() {
     // let the user know
     let oldMessage = buttonMessage
-    buttonMessage = "Copied!"
+    buttonMessage = 'Copied!'
     setTimeout(() => {
       buttonMessage = oldMessage
     }, 1500)
@@ -18,13 +18,12 @@
 
   let signature
   function copySignature() {
-    var range = document.createRange();
-    range.selectNode(signature);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy"); // deprecated but works on all tested browsers
-    window.getSelection().removeAllRanges();
-
+    var range = document.createRange()
+    range.selectNode(signature)
+    window.getSelection().removeAllRanges()
+    window.getSelection().addRange(range)
+    document.execCommand('copy') // deprecated but works on all tested browsers
+    window.getSelection().removeAllRanges()
   }
 </script>
 
@@ -33,7 +32,8 @@
     <div bind:this={signature}>
       <Signature {name} {title} {phone} />
     </div>
-    <button on:click={copySignature} on:click={updateButtonMessage}>{buttonMessage}</button>
+    <button on:click={copySignature} on:click={updateButtonMessage}
+      >{buttonMessage}</button>
     <div id="form">
       <form>
         <label for="name">Name</label>
@@ -47,54 +47,6 @@
     </div>
   </div>
 </main>
-
-<style>
-  :root {
-    --darkPurple: #020035;
-    --fontSize: 12pt;
-  }
-  div#wrapper {
-    display: flex;
-    flex-direction: column;
-    font-family: Helvetica, Arial, sans-serif; 
-    font-size: var(--fontSize);
-  }
-  div#form {
-    margin-top: 2rem;
-    padding: .5rem;
-    border: 2px solid var(--darkPurple);
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  label, button {
-    color: var(--darkPurple);
-    font-weight: bold;
-  }
-  label {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: .5rem;
-  }
-  input {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: .3rem;
-    border: 1px solid var(--darkPurple);
-    font-size: var(--fontSize);
-  }
-  button {
-    margin-top: 1rem;
-    padding: .5rem;
-    border: 0px;
-    background-color: var(--darkPurple);
-    color: white;
-    font-size: var(--fontSize);
-  }
-</style>
 
 <!-- 
 
@@ -135,3 +87,51 @@ async function copySignature1() {
 }
 
 -->
+<style>
+  :root {
+    --darkPurple: #020035;
+    --fontSize: 12pt;
+  }
+  div#wrapper {
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: var(--fontSize);
+  }
+  div#form {
+    margin-top: 2rem;
+    padding: 0.5rem;
+    border: 2px solid var(--darkPurple);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label,
+  button {
+    color: var(--darkPurple);
+    font-weight: bold;
+  }
+  label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+  input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.3rem;
+    border: 1px solid var(--darkPurple);
+    font-size: var(--fontSize);
+  }
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: 0px;
+    background-color: var(--darkPurple);
+    color: white;
+    font-size: var(--fontSize);
+  }
+</style>
