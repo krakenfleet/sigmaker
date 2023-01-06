@@ -1,11 +1,12 @@
 <script context="module">
   // images must load remotely to be reliable
   export const imagesBaseUrl = 'https://files.ink.fish/sigmaker'
-  export const fonts = 'font-size: medium; Helvetica, Arial, sans-serif;'
+  export const fonts =
+    'font-size: medium; font-family: Helvetica, Arial, sans-serif;'
 </script>
 
 <script>
-  import SocialIcons from './SocialIcons.svelte'
+  import InkfishIcons from './InkfishIcons.svelte'
 
   export let name
   export let title
@@ -102,7 +103,7 @@
                   <span style="color: #114C96">Deeply curious</span>
                 </p>
 
-                <SocialIcons {links} />
+                <InkfishIcons {links} />
               </td>
             </tr>
           </tbody>

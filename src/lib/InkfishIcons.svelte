@@ -1,5 +1,5 @@
 <script>
-  import { imagesBaseUrl, fonts } from './Signature.svelte'
+  import { imagesBaseUrl, fonts } from './Inkfish.svelte'
   export let links
 </script>
 

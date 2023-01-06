@@ -1,5 +1,6 @@
 <script>
-  import Signature from './lib/Signature.svelte'
+  import Inkfish from './lib/Inkfish.svelte'
+  import Rocinante from './lib/Rocinante.svelte'
   const urlParams = new URLSearchParams(window.location.search)
 
   let name = urlParams.get('name') ?? 'Randolf Carter'
@@ -8,7 +9,7 @@
 
   let buttonMessage = 'Copy Signature'
   function updateButtonMessage() {
-    // let the user know
+    // notify user copy has happened
     let oldMessage = buttonMessage
     buttonMessage = 'Copied!'
     setTimeout(() => {
@@ -30,10 +31,13 @@
 <main>
   <div id="wrapper">
     <div bind:this={signature}>
-      <Signature {name} {title} {phone} />
+      <Inkfish {name} {title} {phone} />
     </div>
+
     <button on:click={copySignature} on:click={updateButtonMessage}
-      >{buttonMessage}</button>
+      >{buttonMessage}
+    </button>
+
     <div id="form">
       <form>
         <label for="name">Name</label>
