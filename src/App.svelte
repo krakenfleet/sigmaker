@@ -5,9 +5,12 @@
 
   let name = urlParams.get('name') ?? 'Randolf Carter'
   let title = urlParams.get('title') ?? 'Legendary Dreamer'
+  let email = urlParams.get('email') ?? 'randolf@dreamer.com'
   let phone = urlParams.get('phone') ?? '+1 234 567 8900'
+  let template = urlParams.get('template') ?? 'inkfish'
 
   let buttonMessage = 'Copy Signature'
+
   function updateButtonMessage() {
     // notify user copy has happened
     let oldMessage = buttonMessage
@@ -30,22 +33,37 @@
 
 <main>
   <div id="wrapper">
-    <div bind:this={signature}>
-      <Inkfish {name} {title} {phone} />
-    </div>
-
+    <center>
+      <div bind:this={signature}>
+        {#if template === 'inkfish'}
+          <Inkfish {name} {title} {phone} />
+        {:else if template === 'rocinante'}
+          <Rocinante {name} {title} {email} {phone} />
+        {/if}
+      </div>
+    </center>
     <button on:click={copySignature} on:click={updateButtonMessage}
       >{buttonMessage}
     </button>
 
     <div id="form">
       <form>
+        <label for="template">Template</label>
+        <select bind:value={template} name="template">
+          <option value="inkfish">Inkfish</option> />
+          <option value="rocinante">Rocinante</option> />
+        </select>
         <label for="name">Name</label>
         <input type="text" name="name" bind:value={name} />
         <label for="title">Title</label>
         <input type="text" name="title" bind:value={title} />
+        {#if template === 'rocinante'}
+          <label for="email">Email</label>
+          <input type="text" name="email" bind:value={email} />
+        {/if}
         <label for="phone">Phone</label>
         <input type="text" name="phone" bind:value={phone} />
+
         <button>Save to URL</button>
       </form>
     </div>
@@ -53,7 +71,6 @@
 </main>
 
 <!-- 
-
 // other copy paste methods saved for posterity
 function copySig() {
   // only copies text/plain not text/html
@@ -97,19 +114,30 @@ async function copySignature1() {
     --fontSize: 12pt;
   }
   div#wrapper {
+    width: 25rem;
     display: flex;
     flex-direction: column;
     font-family: Helvetica, Arial, sans-serif;
     font-size: var(--fontSize);
+    gap: 1rem;
   }
   div#form {
-    margin-top: 2rem;
     padding: 0.5rem;
     border: 2px solid var(--darkPurple);
   }
   form {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+  }
+  select {
+    padding: 0.5rem;
+    border: 1px solid var(--darkPurple);
+    color: var(--darkPurple);
+    background-color: white;
+    font-size: var(--fontSize);
+    font-style: italic;
+    /* text-align: center; */
   }
   label,
   button {
@@ -120,18 +148,16 @@ async function copySignature1() {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 0.5rem;
   }
   input {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0.3rem;
+    padding: 0.5rem;
     border: 1px solid var(--darkPurple);
     font-size: var(--fontSize);
   }
   button {
-    margin-top: 1rem;
     padding: 0.5rem;
     border: 0px;
     background-color: var(--darkPurple);
