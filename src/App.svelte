@@ -1,6 +1,7 @@
 <script>
   import Inkfish from './lib/Inkfish.svelte'
   import Rocinante from './lib/Rocinante.svelte'
+  import Instructions from './lib/Instructions.svelte'
   const urlParams = new URLSearchParams(window.location.search)
 
   let name = urlParams.get('name') ?? 'Randolf Carter'
@@ -8,6 +9,7 @@
   let email = urlParams.get('email') ?? 'randolf@dreamer.com'
   let phone = urlParams.get('phone') ?? '+1 234 567 8900'
   let template = urlParams.get('template') ?? 'inkfish'
+  let instructions = urlParams.get('instructions') ?? 'gmail_web'
 
   let buttonMessage = 'Copy Signature'
 
@@ -67,6 +69,7 @@
         <button>Save to URL</button>
       </form>
     </div>
+    <Instructions instructions />
   </div>
 </main>
 
@@ -110,8 +113,9 @@ async function copySignature1() {
 -->
 <style>
   :root {
-    --darkPurple: #020035;
     --fontSize: 12pt;
+    --darkPurple: #020035;
+    --logoBlue: #114c96;
   }
   div#wrapper {
     width: 25rem;
