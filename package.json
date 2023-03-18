@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "vite build --base=/sigmaker/",
     "buildtest": "vite build --base=/test/",
+    "deploy2prod": "pnpm build && rsync -av --dry-run --exclude .DS_Store dist/ squidward:/srv/caddy/site/files.ink.fish/sigmaker/",
+    "deploy2test": "pnpm buildtest && rsync -av --delete --exclude .DS_Store dist/ squidward:/srv/caddy/site/files.ink.fish/test/",
     "preview": "vite preview"
   },
   "devDependencies": {
