@@ -18,6 +18,9 @@
     ><td colspan="2" style="padding-bottom: .3rem;">
       <b><i>{name}</i></b><br />
       {title}<br />
+      <div style="padding: .3rem 0; font-size: 1.7rem; font-weight: 600;">
+        <span style="font-weight: 600; color: #d82a04">S</span>portsfisher
+      </div>
       <!-- <img style="margin: .3rem 0;" src={logoUrl} alt="" /><br /> -->
       <i>{email}</i>
     </td>
