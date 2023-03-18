@@ -1,11 +1,19 @@
 <script context="module">
-  // images must load remotely to be reliable
+  // images must load remotely from an absolute URL to be reliable
   export const imagesBaseUrl = 'https://files.ink.fish/sigmaker'
   export const fonts =
     'font-size: medium; font-family: Helvetica, Arial, sans-serif;'
+  // 'font-size: medium; font-family: Helvetica, Arial, sans-serif;'
 </script>
 
 <script>
+  // images must load remotely from an absolute URL to be reliable
+  // let imagesBaseUrl = 'https://files.ink.fish'
+  // import { onMount } from 'svelte'
+  // let path = ''
+  // // onMount(() => (url = window.location.href))
+  // onMount(() => (imagesBaseUrl = imagesBaseUrl + window.location.pathname))
+
   import InkfishIcons from './InkfishIcons.svelte'
 
   export let name
@@ -26,6 +34,8 @@
     },
   ]
 </script>
+
+<!-- <h1>PATH: {path}</h1> -->
 
 <!-- Horrendous HTML and CSS as recommended for email signatures. -->
 <table style={fonts} cellspacing="0" cellpadding="0">

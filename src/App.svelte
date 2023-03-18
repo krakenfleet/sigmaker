@@ -1,15 +1,18 @@
 <script>
   import Inkfish from './lib/Inkfish.svelte'
   import Rocinante from './lib/Rocinante.svelte'
+  import Sportsfisher from './lib/Sportsfisher.svelte'
   import Instructions from './lib/Instructions.svelte'
-  const urlParams = new URLSearchParams(window.location.search)
 
+  const urlParams = new URLSearchParams(window.location.search)
   let name = urlParams.get('name') ?? 'Randolf Carter'
   let title = urlParams.get('title') ?? 'Legendary Dreamer'
   let email = urlParams.get('email') ?? 'randolf@dreamer.com'
-  let phone = urlParams.get('phone') ?? '+1 234 567 8900'
+  let phone = urlParams.get('phone') ?? '+1 234 567 8910'
   let template = urlParams.get('template') ?? 'inkfish'
-  let instructions = urlParams.get('instructions') ?? 'gmail_web'
+
+  // doesn't save to URL
+  let instructions = urlParams.get('instructions') ?? 'outlook_win'
 
   let buttonMessage = 'Copy Signature'
 
@@ -41,6 +44,8 @@
           <Inkfish {name} {title} {phone} />
         {:else if template === 'rocinante'}
           <Rocinante {name} {title} {email} {phone} />
+        {:else if template === 'sportsfisher'}
+          <Sportsfisher {name} {title} {email} {phone} />
         {/if}
       </div>
     </center>
@@ -54,12 +59,13 @@
         <select bind:value={template} name="template">
           <option value="inkfish">Inkfish</option> />
           <option value="rocinante">Rocinante</option> />
+          <option value="sportsfisher">Sportsfisher</option> />
         </select>
         <label for="name">Name</label>
         <input type="text" name="name" bind:value={name} />
         <label for="title">Title</label>
         <input type="text" name="title" bind:value={title} />
-        {#if template === 'rocinante'}
+        {#if template !== 'inkfish'}
           <label for="email">Email</label>
           <input type="text" name="email" bind:value={email} />
         {/if}
@@ -69,7 +75,7 @@
         <button>Save to URL</button>
       </form>
     </div>
-    <Instructions instructions />
+    <Instructions {instructions} />
   </div>
 </main>
 

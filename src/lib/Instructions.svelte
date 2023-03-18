@@ -1,21 +1,41 @@
 <script>
-  let instructions
+  export let instructions
 </script>
 
 <form>
-  <button>Instructions for </button>
+  <button>Show Instructions for … </button>
   <select bind:value={instructions} name="instructions">
+    <option value="outlook_win">Outlook (Windows)</option>
     <option value="mail_ios">Mail App (iOS)</option>
-    <option value="fastmail_web">FastMail (web) </option>
-    <option value="gmail_web">Gmail (web) </option>
-    <option value="gmail_ios">Gmail App (iOS) </option>
-    <option value="outlook">Outlook</option>
-    <option value="mail_macos">Mail App (macOS) </option>
+    <option value="gmail_web">Gmail (web)</option>
+    <option value="gmail_ios">Gmail App (iOS)</option>
+    <option value="mail_macos">Mail App (macOS)</option>
+    <option value="fastmail_web">FastMail (web)</option>
   </select>
 
-  {#if instructions === 'outlook'}
+  {#if instructions === 'outlook_win'}
     <ol>
-      <li>Coming soon …</li>
+      <li>In Outlook click the <u>New Email</u> button</li>
+      <li>In the menubar of the new blank email, click <u>Insert</u></li>
+      <li>
+        Within the insert menubar click <u>Signature</u> and then
+        <u>Signatures</u>
+      </li>
+      <li>In the <u>Signatures and Stationary</u> window click <u>New</u></li>
+      <li>
+        In the <u>New Signature</u> window give your new signature a name and
+        click <u>OK</u>
+      </li>
+      <li>Copy your customised signature (from this page)</li>
+      <li>
+        Pase your signature into the "Edit signature" text box and click <u
+          >OK</u>
+      </li>
+      <li>
+        If you have more than one signature, you may set the default signature
+        under <u>Choose default signature</u>
+      </li>
+      <li>Click <u>OK</u></li>
     </ol>
   {:else if instructions === 'mail_ios'}
     <ol>
