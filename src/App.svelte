@@ -12,7 +12,7 @@
   let template = urlParams.get('template') ?? 'inkfish'
 
   // doesn't save to URL
-  let instructions = urlParams.get('instructions') ?? 'outlook_win'
+  let instructions = urlParams.get('instructions') ?? 'emclient'
 
   let buttonMessage = 'Copy Signature'
 

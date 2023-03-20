@@ -13,22 +13,16 @@
   const yachtUrl = imagesBaseUrl + '/sportsfisher/yacht.png'
 </script>
 
-<table>
-  <tr
-    ><td colspan="2" style="padding-bottom: .3rem;">
-      <b><i>{name}</i></b><br />
-      {title}<br />
-      <div style="padding: .3rem 0; font-size: 1.7rem; font-weight: 600;">
-        <span style="font-weight: 600; color: #d82a04">S</span>portsfisher
-      </div>
-      <!-- <img style="margin: .3rem 0;" src={logoUrl} alt="" /><br /> -->
-      <i>{email}</i>
+<table border="0" style="font-weight: bold;">
+  <tr>
+    <td colspan="2" style="padding-bottom: .3rem; color: #5856D5;">
+      {name}<br />
+      {title} &bullet; SF-108
     </td>
   </tr>
-  <tr><td>Mobile:</td> <td>{phone}</td></tr>
-  <tr><td>VoIP:</td> <td>+1 954 672 6594</td></tr>
-  <tr><td>VoIP:</td> <td>+1 954 672 6595</td></tr>
-  <tr><td colspan="2"><img src={yachtUrl} alt="" /></td></tr>
+  <tr><td>{email}</td></tr>
+  <tr><td>{phone}</td></tr>
+  <tr><td><img src={yachtUrl} alt="" /></td></tr>
 </table>
 
 <style>

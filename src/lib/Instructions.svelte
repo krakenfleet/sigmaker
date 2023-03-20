@@ -6,6 +6,7 @@
   <button>Show Instructions for … </button>
   <div>
     <select bind:value={instructions} name="instructions">
+      <option value="emclient">eM Client</option>
       <option value="outlook_win">Outlook (Windows)</option>
       <option value="mail_macos">Mail App (macOS)</option>
       <option value="mail_ios">Mail App (iOS)</option>
@@ -14,7 +15,39 @@
       <option value="fastmail_web">FastMail (web)</option>
     </select>
 
-    {#if instructions === 'outlook_win'}
+    {#if instructions === 'emclient'}
+      <ol>
+        <li>
+          On macOS, open <u>Preferences</u> by going to the the <u>eM Client</u>
+          menu
+        </li>
+        <li>
+          On Windows, open <u>Settings</u> by going to the <u>Menu</u> dropdown next
+          to the eM Client logo in the top left corner.
+        </li>
+        <li>
+          In the left hand sidebar under <u>Mail</u>, select
+          <u>Templates and Signatures</u>
+        </li>
+        <li>
+          In the <u>Signatures</u> section, click the <u>Signatures</u> button
+        </li>
+        <li>Click the orange <u>+ New</u> button</li>
+        <li>Type a name for this signature in the <u>Name</u> field</li>
+        <li>
+          Paste your signature into the text box and click the orange <u
+            >Save</u>
+          button
+        </li>
+        <li>Close the <u>Signatures</u> window</li>
+        <li>
+          In the <u>Signatures</u> select your new signature in the
+          <u>Signature for new mail</u> dropdown (and optionally for the replies
+          and forwards dropdown)
+        </li>
+        <li>Click the orange <u>Save & Close</u> button</li>
+      </ol>
+    {:else if instructions === 'outlook_win'}
       <ol>
         <li>In Outlook click the <u>New Email</u> button</li>
         <li>In the menubar of the new blank email, click <u>Insert</u></li>
@@ -29,7 +62,7 @@
         </li>
         <li>Copy your customised signature (from this page)</li>
         <li>
-          Pase your signature into the "Edit signature" text box and click <u
+          Paste your signature into the "Edit signature" text box and click <u
             >OK</u>
         </li>
         <li>
@@ -92,10 +125,12 @@
         <li>Paste into the signature box (the images will not show up)</li>
       </ol>
       <i
-        >Note: This only partially works. It will look correct but none of the
-        links will work. If you'd like the proper version please contact <a
-          href="mailto:support@ink.fish">support@ink.fish</a
-        >.</i>
+        >Note: This only partially works, it will look correct but none of the
+        links will work. Instructions for a fully functional signature are <a
+          href="https://www.success-trending.club/2022/01/add-email-signature-mac-mail.html">
+          available here</a
+        >. If you'd like assistance please contact
+        <a href="mailto:support@ink.fish">support@krakenfleet.co</a>.</i>
     {:else if instructions === 'fastmail_web'}
       <ol>
         <li>
@@ -164,7 +199,7 @@
   }
   ol,
   ul {
-    margin: 0;
+    margin: 1rem 0;
     line-height: 1.5;
   }
 </style>
