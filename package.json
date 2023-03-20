@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/sigmaker/",
+    "buildprod": "vite build --base=/sigmaker/",
     "buildtest": "vite build --base=/test/",
-    "deploy2prod": "pnpm build && rsync -av --dry-run --exclude .DS_Store dist/ squidward:/srv/caddy/site/files.ink.fish/sigmaker/",
+    "backupprod": "ssh squidward \"tar jcvf /var/backups/sigmaker/sigmaker-`date +%Y%m%d-%H%M%S`.tbz /srv/caddy/site/files.ink.fish/sigmaker\"",
+    "deploy2prod": "pnpm buildprod && pnpm backupprod && rsync -av --delete --exclude .DS_Store dist/ squidward:/srv/caddy/site/files.ink.fish/sigmaker/",
     "deploy2test": "pnpm buildtest && rsync -av --delete --exclude .DS_Store dist/ squidward:/srv/caddy/site/files.ink.fish/test/",
     "preview": "vite preview"
   },
