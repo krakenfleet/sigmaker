@@ -122,6 +122,13 @@
     </tr>
   </tbody>
 </table>
+<p style="font-size: 10pt; color: #adadad;">
+  This e-mail is for the sole use of the intended recipient(s). It contains
+  information that may be confidential. If you believe that it has been sent to
+  you in error, please notify the sender immediately by reply e-mail and destroy
+  all copies of this message. Any disclosure, copying, distribution, or use of
+  this information by anyone other than the intended recipient is prohibited.
+</p>
 
 <style>
   /* Must use inline styles with email. */

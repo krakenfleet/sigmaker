@@ -7,9 +7,9 @@
     "dev": "vite",
     "buildprod": "vite build --base=/sigmaker/",
     "buildtest": "vite build --base=/test/",
-    "backupprod": "ssh squidward \"tar jcvf /var/backups/sigmaker/sigmaker-`date +%Y%m%d-%H%M%S`.tbz /srv/caddy/site/files.ink.fish/sigmaker\"",
-    "deploy2prod": "pnpm buildprod && pnpm backupprod && rsync -av --delete --exclude .DS_Store dist/ squidward:/srv/caddy/site/files.ink.fish/sigmaker/",
-    "deploy2test": "pnpm buildtest && rsync -av --delete --exclude .DS_Store dist/ squidward:/srv/caddy/site/files.ink.fish/test/",
+    "backupprod": "ssh mad1 \"tar jcvf /var/backups/sigmaker/sigmaker-`date +%Y%m%d-%H%M%S`.tbz /srv/caddy/www/files.ink.fish/sigmaker\"",
+    "deploy2prod": "pnpm buildprod && pnpm backupprod && rsync -av --delete --exclude .DS_Store dist/ mad1:/srv/caddy/www/files.ink.fish/sigmaker/",
+    "deploy2test": "pnpm buildtest && rsync -av --delete --exclude .DS_Store dist/ mad1:/srv/caddy/www/files.ink.fish/test/",
     "preview": "vite preview"
   },
   "devDependencies": {
